@@ -46,4 +46,14 @@ public class Aluno {
         }
         return menorNota;
     }
+
+    // toString
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Notas: " + notas.toString();
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }
