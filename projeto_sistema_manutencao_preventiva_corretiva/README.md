@@ -1,30 +1,39 @@
 # Sistema de Manutenção Preventiva e Corretiva
 
-## Descrição do Projeto
-O Sistema de Manutenção Preventiva e Corretiva é uma aplicação desenvolvida em Java com interface gráfica em Swing, destinada ao gerenciamento do ciclo de vida de máquinas e equipamentos industriais. O foco do sistema é controlar manutenções preventivas e corretivas, gerenciar técnicos e falhas, e gerar relatórios de indicadores de desempenho como MTTR e MTBF.
-
 ## Objetivos
-- Desenvolver uma **interface gráfica (Swing)** para gerenciamento de máquinas, técnicos e manutenções.
-- Implementar **funcionalidades CRUD** para máquinas, manutenções, falhas e técnicos.
-- **Gerar relatórios** com base nos dados registrados, incluindo indicadores de desempenho.
-- **Conectar com API REST** para armazenar e manipular dados em tempo real.
-- Realizar **validação e testes** para garantir a robustez do sistema.
 
-## Funcionalidades
-- **Cadastro e Gerenciamento de Máquinas**: Inclusão, edição e visualização de especificações técnicas.
-- **Registro de Manutenções Preventivas e Corretivas**: Histórico completo por máquina, com informações de peças trocadas e tempo de inatividade.
-- **Gerenciamento de Técnicos**: Cadastro e controle de disponibilidade e especialidades.
-- **Relatórios e Indicadores de Desempenho**: Geração de relatórios com cálculos automáticos de MTTR (Tempo Médio de Reparo) e MTBF (Tempo Médio Entre Falhas).
-- **API REST**: Integração com uma API REST para persistência de dados.
+O propósito do Sistema de Manutenção Preventiva e Corretiva é fornecer uma solução eficiente para o gerenciamento de máquinas e equipamentos industriais. Com foco em minimizar o tempo de inatividade e otimizar o desempenho, os principais objetivos do sistema são:
 
-## Tecnologias Utilizadas
-- **Java**: Linguagem principal para desenvolvimento do backend e interface gráfica.
-- **Swing**: Para desenvolvimento da interface gráfica.
-- **JSON-Server**: Utilizado para simulação da API REST e manipulação de dados.
-- **Git**: Controle de versão e versionamento do código.
+1. **Desenvolver uma interface gráfica (Swing)**: Facilitar o gerenciamento de máquinas, técnicos e manutenções através de uma interface intuitiva.
+2. **Implementar funcionalidades CRUD**: Permitir operações de Cadastro, Leitura, Atualização e Exclusão para máquinas, manutenções, falhas e técnicos.
+3. **Geração de Relatórios**: Criar relatórios automáticos com base nos dados registrados, incluindo indicadores de desempenho (MTTR e MTBF).
+4. **Conexão com API REST**: Armazenar e manipular dados em tempo real através de uma API.
+5. **Validação e Testes**: Garantir que o sistema seja robusto e confiável antes da entrega final.
 
-## Requisitos
-- **Java 8** ou superior instalado.
-- **IDE**: IntelliJ IDEA ou Eclipse.
-- **JSON-Server**: Para simular a API REST.
-- **Git**: Para versionamento do código.
+## Levantamento de Recursos
+
+Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de recursos técnicos e ferramentas, os quais incluem:
+
+1. **Ferramentas de Desenvolvimento**:
+   - **Linguagem de Programação**: Java, para construção do backend e interface gráfica.
+   - **Interface Gráfica**: Swing, que permitirá a criação de uma interface amigável para o usuário final.
+   - **API REST**: Utilização do JSON-Server para simulação de persistência de dados.
+   - **Banco de Dados (opcional)**: MySQL ou PostgreSQL, caso seja necessária uma persistência de dados mais complexa no futuro.
+
+2. **Ambiente de Trabalho**:
+   - **IDE**: IntelliJ IDEA ou Eclipse.
+   - **Controle de Versão**: Git e GitHub para versionamento do código.
+   - **Ferramentas de Gestão**: Trello ou Notion para acompanhar o progresso do projeto e gerenciar tarefas.
+   
+3. **Outros Recursos**:
+   - **Computador e Acesso à Internet**: Essenciais para desenvolvimento, consultas e integração de bibliotecas.
+   - **Bibliotecas externas**: JasperReports para geração de relatórios.
+
+## Análise de Riscos
+
+| Risco                    | Descrição                                                                                   | Mitigação                                                                         |
+|--------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| **Risco de Prazo**      | Com uma semana para entregar o projeto completo, há o risco de não conseguir implementar todas as funcionalidades. | Priorizar o desenvolvimento das funcionalidades essenciais como CRUD e interface gráfica. Deixar melhorias e funcionalidades secundárias para fases futuras. |
+| **Risco Técnico**        | A integração com a API REST pode apresentar dificuldades inesperadas, especialmente na manipulação em tempo real dos dados. | Iniciar a implementação da API o quanto antes, usando o JSON-Server para testar a comunicação sem atrasos no cronograma. |
+| **Risco de Falta de Testes** | O tempo curto pode comprometer a execução de testes robustos no sistema, levando a possíveis falhas na versão final. | Realizar testes básicos em cada funcionalidade conforme ela for sendo desenvolvida, garantindo o mínimo de confiabilidade antes da entrega. |
+
