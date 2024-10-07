@@ -29,3 +29,12 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
 | **Risco Técnico**        | A integração com a API REST pode apresentar dificuldades inesperadas, especialmente na manipulação em tempo real dos dados. | Média          | Alto      | Iniciar a implementação da API o quanto antes, usando o JSON-Server para testar a comunicação sem atrasos no cronograma. |
 | **Risco de Falta de Testes** | O tempo limitado pode comprometer a execução de testes robustos no sistema, resultando em falhas na versão final. | Média          | Médio     | Realizar testes básicos em cada funcionalidade conforme ela for sendo desenvolvida, garantindo o mínimo de confiabilidade antes da entrega. |
 
+## Diagramas
+
+### Diagrama de Classe
+
+![Diagrama de Classe](img/diagrama_classe.png.png)
+
+### Diagrama de Fluxo do Operador e Técnico
+
+![Diagrama de Fluxo](img/diagrama_fluxo.pngdiagrama_fluxo.png)
