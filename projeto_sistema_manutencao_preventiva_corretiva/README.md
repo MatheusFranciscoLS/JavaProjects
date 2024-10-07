@@ -21,11 +21,10 @@ O Sistema de Manutenção Preventiva e Corretiva é uma aplicação desenvolvida
 - **Java**: Linguagem principal para desenvolvimento do backend e interface gráfica.
 - **Swing**: Para desenvolvimento da interface gráfica.
 - **JSON-Server**: Utilizado para simulação da API REST e manipulação de dados.
-- **JasperReports**: Para geração de relatórios.
 - **Git**: Controle de versão e versionamento do código.
 
 ## Requisitos
 - **Java 8** ou superior instalado.
 - **IDE**: IntelliJ IDEA ou Eclipse.
-- **JSON-Server**: Para simular a API REST (instruções de instalação abaixo).
-- **Git**: Para versionamento do código (opcional).
+- **JSON-Server**: Para simular a API REST.
+- **Git**: Para versionamento do código.
