@@ -9,6 +9,7 @@ O propósito do Sistema de Manutenção Preventiva e Corretiva é fornecer uma s
 3. **Geração de Relatórios**: Criar relatórios automáticos com base nos dados registrados, incluindo indicadores de desempenho (MTTR e MTBF).
 4. **Conexão com API REST**: Armazenar e manipular dados em tempo real através de uma API.
 5. **Validação e Testes**: Garantir que o sistema seja robusto e confiável antes da entrega final.
+6. **Modelo MVC**: Adotar a arquitetura MVC (Model-View-Controller) para organizar o código e separar a lógica de negócio da interface de usuário, facilitando a manutenção e evolução do sistema.
 
 ## Levantamento de Recursos
 
