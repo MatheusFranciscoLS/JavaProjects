@@ -33,8 +33,8 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
 
 ### Diagrama de Classe
 
-![Diagrama de Classe](img/diagrama_classe.png.png)
+![Diagrama de Classe](img/diagrama_classe.png)
 
 ### Diagrama de Fluxo do Operador e Técnico
 
-![Diagrama de Fluxo](img/diagrama_fluxo.pngdiagrama_fluxo.png)
+![Diagrama de Fluxo](img/diagrama_fluxo.png)
