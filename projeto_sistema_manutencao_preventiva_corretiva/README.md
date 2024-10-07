@@ -18,16 +18,7 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
    - **Linguagem de Programação**: Java, para construção do backend e interface gráfica.
    - **Interface Gráfica**: Swing, que permitirá a criação de uma interface amigável para o usuário final.
    - **API REST**: Utilização do JSON-Server para simulação de persistência de dados.
-   - **Banco de Dados (opcional)**: MySQL ou PostgreSQL, caso seja necessária uma persistência de dados mais complexa no futuro.
-
-2. **Ambiente de Trabalho**:
-   - **IDE**: IntelliJ IDEA ou Eclipse.
-   - **Controle de Versão**: Git e GitHub para versionamento do código.
-   - **Ferramentas de Gestão**: Trello ou Notion para acompanhar o progresso do projeto e gerenciar tarefas.
-   
-3. **Outros Recursos**:
-   - **Computador e Acesso à Internet**: Essenciais para desenvolvimento, consultas e integração de bibliotecas.
-   - **Bibliotecas externas**: JasperReports para geração de relatórios.
+   - **Banco de Dados**: MySQL ou PostgreSQL, caso seja necessária uma persistência de dados mais complexa no futuro.
 
 ## Análise de Riscos
 
