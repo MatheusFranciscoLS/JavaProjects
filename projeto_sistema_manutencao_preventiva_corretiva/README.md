@@ -31,9 +31,9 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
 
 ## Análise de Riscos
 
-| Risco                    | Descrição                                                                                   | Mitigação                                                                         |
-|--------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| **Risco de Prazo**      | Com uma semana para entregar o projeto completo, há o risco de não conseguir implementar todas as funcionalidades. | Priorizar o desenvolvimento das funcionalidades essenciais como CRUD e interface gráfica. Deixar melhorias e funcionalidades secundárias para fases futuras. |
-| **Risco Técnico**        | A integração com a API REST pode apresentar dificuldades inesperadas, especialmente na manipulação em tempo real dos dados. | Iniciar a implementação da API o quanto antes, usando o JSON-Server para testar a comunicação sem atrasos no cronograma. |
-| **Risco de Falta de Testes** | O tempo curto pode comprometer a execução de testes robustos no sistema, levando a possíveis falhas na versão final. | Realizar testes básicos em cada funcionalidade conforme ela for sendo desenvolvida, garantindo o mínimo de confiabilidade antes da entrega. |
+| Risco                    | Probabilidade  | Impacto   | Mitigação                                                                         |
+|--------------------------|----------------|-----------|----------------------------------------------------------------------------------|
+| **Risco de Prazo**      | Alta           | Alto      | Priorizar o desenvolvimento das funcionalidades essenciais como CRUD e interface gráfica. Deixar melhorias e funcionalidades secundárias para fases futuras. |
+| **Risco Técnico**        | Média          | Alto      | Iniciar a implementação da API o quanto antes, usando o JSON-Server para testar a comunicação sem atrasos no cronograma. |
+| **Risco de Falta de Testes** | Média       | Médio     | Realizar testes básicos em cada funcionalidade conforme ela for sendo desenvolvida, garantindo o mínimo de confiabilidade antes da entrega. |
 
