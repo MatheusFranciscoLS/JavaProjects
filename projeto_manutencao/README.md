@@ -21,13 +21,17 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
    - **API REST**: Utilização do JSON-Server para simulação de persistência de dados.
    - **Banco de Dados**: MySQL ou PostgreSQL, caso seja necessária uma persistência de dados mais complexa no futuro.
 
-## Análise de Riscos
+<h2 style="text-align: center;">Análise de Riscos</h2>
+
+<div style="text-align: center;">
 
 | Risco                    | Descrição                                                                                   | Probabilidade  | Impacto   | Mitigação                                                                         |
 |--------------------------|---------------------------------------------------------------------------------------------|----------------|-----------|----------------------------------------------------------------------------------|
 | **Risco de Prazo**      | Há o risco de não conseguir implementar todas as funcionalidades dentro do prazo estabelecido (uma semana). | Alta           | Alto      | Priorizar o desenvolvimento das funcionalidades essenciais como CRUD e interface gráfica. Deixar melhorias e funcionalidades secundárias para fases futuras. |
 | **Risco Técnico**        | A integração com a API REST pode apresentar dificuldades inesperadas, especialmente na manipulação em tempo real dos dados. | Média          | Alto      | Iniciar a implementação da API o quanto antes, usando o JSON-Server para testar a comunicação sem atrasos no cronograma. |
 | **Risco de Falta de Testes** | O tempo limitado pode comprometer a execução de testes robustos no sistema, resultando em falhas na versão final. | Média          | Médio     | Realizar testes básicos em cada funcionalidade conforme ela for sendo desenvolvida, garantindo o mínimo de confiabilidade antes da entrega. |
+
+</div>
 
 ## Diagramas
 
