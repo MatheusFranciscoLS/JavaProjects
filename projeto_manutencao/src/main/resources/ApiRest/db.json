@@ -1,0 +1,64 @@
+{
+  "maquinas": [
+    {
+      "id": "df66",
+      "codigo": "M002",
+      "nome": "Fresadora",
+      "modelo": "FRE 5000",
+      "fabricante": "Haas",
+      "dataAquisicao": "2023-05-15",
+      "tempoVidaEstimado": 8,
+      "localizacao": "Linha 2",
+      "detalhes": "Alta precisão e velocidade.",
+      "manual": "URL do manual"
+    }
+  ],
+  "historicoManutencao": [
+    {
+      "id": "1",
+      "maquinaId": 1,
+      "data": "2024-10-07",
+      "tipo": "Preventiva",
+      "pecasTrocadas": "Correia",
+      "tempoDeParada": 4,
+      "tecnicoId": "João Silva",
+      "observacoes": "Substituição preventiva da correia."
+    },
+    {
+      "id": "a2d2",
+      "maquinaId": "1",
+      "data": "2024-10-10",
+      "tipo": "Corretiva",
+      "pecasTrocadas": "Motor",
+      "tempoDeParada": 2,
+      "tecnicoId": null,
+      "observacoes": "Substituição do motor devido a falha."
+    }
+  ],
+  "falhas": [
+    {
+      "id": "1",
+      "maquinaId": 1,
+      "data": "2024-09-28",
+      "problema": "Falha no motor",
+      "prioridade": "Alta",
+      "operador": "Carlos Lima"
+    },
+    {
+      "id": "353e",
+      "maquinaId": "1",
+      "data": "2024-10-05",
+      "problema": "Falha no sistema elétrico",
+      "prioridade": "Média",
+      "operador": "Ana Costa"
+    }
+  ],
+  "tecnicos": [
+    {
+      "id": "bb46",
+      "nome": "Maria Oliveira",
+      "especialidade": "Elétrica",
+      "disponibilidade": "Ocupado"
+    }
+  ]
+}
