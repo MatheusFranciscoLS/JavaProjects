@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "apirest": "file:"
+    "apirest": "file:",
+    "json-server": "^1.0.0-beta.3"
   }
 }
