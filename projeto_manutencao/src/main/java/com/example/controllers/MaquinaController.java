@@ -8,12 +8,12 @@ import com.example.models.Maquina;
 public class MaquinaController {
     private List<Maquina> maquinas;
 
-    public MaquinaController(){
+    public MaquinaController() {
         maquinas = new ArrayList<>();
     }
 
-    //metodos
-    public void createMaquina(Maquina maquina){
-        maquinas.add(maquina);
+    // metodos - CRUD
+    public void createMaquina(Maquina maquina) {
+        this.maquinas.add(maquina);
     }
 }
