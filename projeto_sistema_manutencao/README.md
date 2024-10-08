@@ -38,3 +38,20 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
 ### Diagrama de Fluxo do Operador e Técnico
 
 ![Diagrama de Fluxo](img/diagrama_fluxo.png)
+
+### Teste ApiRest
+
+![Teste ApiRest Maquinas - GET](img/maquinasget.png)
+![Teste ApiRest Maquinas - POST](img/maquinaspost.png)
+![Teste ApiRest Maquinas - PUT](img/maquinasput.png)
+![Teste ApiRest Maquinas - DELETE](img/maquinasdelete.png)
+
+![Teste ApiRest Manutenções - GET](img/historicoManutencaoget.png)
+![Teste ApiRest Manutenções - POST](img/historicoManutencaopost.png)
+
+![Teste ApiRest Falhas - GET](img/falhasget.png)
+![Teste ApiRest Falhas - POST](img/falhaspost.png)
+
+![Teste ApiRest Técnico - GET](img/tecnicoget.png)
+![Teste ApiRest Técnico - POST](img/tecnicopost.png)
+![Teste ApiRest Técnico - DELETE](img/tecnicodelete.png)
