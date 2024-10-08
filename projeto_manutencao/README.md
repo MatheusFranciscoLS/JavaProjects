@@ -39,19 +39,30 @@ Para alcançar os objetivos estabelecidos, o projeto vai demandar uma série de 
 
 ![Diagrama de Fluxo](img/diagrama_fluxo.png)
 
-### Teste ApiRest
+## Teste ApiRest
 
+### Maquinas - GET
 ![Teste ApiRest Maquinas - GET](img/maquinasget.png)
+### Maquinas - POST
 ![Teste ApiRest Maquinas - POST](img/maquinaspost.png)
+### Maquinas - PUT
 ![Teste ApiRest Maquinas - PUT](img/maquinasput.png)
+### Maquinas - DELETE
 ![Teste ApiRest Maquinas - DELETE](img/maquinasdelete.png)
 
+### Manutenções - GET
 ![Teste ApiRest Manutenções - GET](img/historicoManutencaoget.png)
+### Manutenções - POST
 ![Teste ApiRest Manutenções - POST](img/historicoManutencaopost.png)
 
+### Falhas - GET
 ![Teste ApiRest Falhas - GET](img/falhasget.png)
+### Falhas - POST
 ![Teste ApiRest Falhas - POST](img/falhaspost.png)
 
+### Técnico - GET
 ![Teste ApiRest Técnico - GET](img/tecnicoget.png)
+### Técnico - POST
 ![Teste ApiRest Técnico - POST](img/tecnicopost.png)
+### Técnico - DELETE
 ![Teste ApiRest Técnico - DELETE](img/tecnicodelete.png)
