@@ -11,6 +11,17 @@
       "localizacao": "Linha 2",
       "detalhes": "Alta precisão e velocidade.",
       "manual": "URL do manual"
+    }, {
+      "id": "dfxd",
+      "codigo": "M002",
+      "nome": "Fresadora",
+      "modelo": "FRE 5000",
+      "fabricante": "Haas",
+      "dataAquisicao": "2023-05-15",
+      "tempoVidaEstimado": 8,
+      "localizacao": "Linha 2",
+      "detalhes": "Alta precisão e velocidade.",
+      "manual": "URL do manual"
     }
   ],
   "historicoManutencao": [
