@@ -9,19 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaquinaAPI {
-    private static List<Maquina> maquinas = new ArrayList<>();
 
-    // Método para obter todas as máquinas (GET)
+    // Método para obter todas as máquinas
     public static List<Maquina> getMaquinas() {
         String json = ApiConnection.getData("maquinas");
-        
+        List<Maquina> maquinas = new ArrayList<>();
+
         if (json != null) {
             JSONArray jsonArray = new JSONArray(json);
-            maquinas.clear(); // Limpa a lista antes de adicionar os novos dados
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Maquina maquina = new Maquina(
-                    jsonObject.getString("id"), // Altere para String para se alinhar ao modelo
+                    jsonObject.getString("id"),
                     jsonObject.getString("codigo"),
                     jsonObject.getString("nome"),
                     jsonObject.getString("modelo"),
@@ -38,41 +37,36 @@ public class MaquinaAPI {
         return maquinas;
     }
 
-    // Método para criar uma nova máquina (POST)
-    public int createMaquina(Maquina maquina) {
-        JSONObject maquinaJson = new JSONObject();
-        maquinaJson.put("codigo", maquina.getCodigo());
-        maquinaJson.put("nome", maquina.getNome());
-        maquinaJson.put("modelo", maquina.getModelo());
-        maquinaJson.put("fabricante", maquina.getFabricante());
-        maquinaJson.put("dataAquisicao", maquina.getDataAquisicao().toString());
-        maquinaJson.put("tempoVidaEstimado", maquina.getTempoVidaEstimado());
-        maquinaJson.put("localizacao", maquina.getLocalizacao());
-        maquinaJson.put("detalhes", maquina.getDetalhes());
-        maquinaJson.put("manual", maquina.getManual());
+    // Método para criar uma nova máquina
+    public static int postMaquina(Maquina maquina) {
+        JSONObject json = new JSONObject();
+        json.put("codigo", maquina.getCodigo());
+        json.put("nome", maquina.getNome());
+        json.put("modelo", maquina.getModelo());
+        json.put("fabricante", maquina.getFabricante());
+        json.put("dataAquisicao", maquina.getDataAquisicao().toString());
+        json.put("tempoVidaEstimado", maquina.getTempoVidaEstimado());
+        json.put("localizacao", maquina.getLocalizacao());
+        json.put("detalhes", maquina.getDetalhes());
+        json.put("manual", maquina.getManual());
 
-        return ApiConnection.postData("maquinas", maquinaJson.toString());
+        return ApiConnection.postData("maquinas", json.toString());
     }
 
-    // Método para atualizar uma máquina (PUT)
-    public static int updateMaquina(Maquina maquina) {
-        JSONObject maquinaJson = new JSONObject();
-        maquinaJson.put("id", maquina.getId());
-        maquinaJson.put("codigo", maquina.getCodigo());
-        maquinaJson.put("nome", maquina.getNome());
-        maquinaJson.put("modelo", maquina.getModelo());
-        maquinaJson.put("fabricante", maquina.getFabricante());
-        maquinaJson.put("dataAquisicao", maquina.getDataAquisicao().toString());
-        maquinaJson.put("tempoVidaEstimado", maquina.getTempoVidaEstimado());
-        maquinaJson.put("localizacao", maquina.getLocalizacao());
-        maquinaJson.put("detalhes", maquina.getDetalhes());
-        maquinaJson.put("manual", maquina.getManual());
+    // Método para atualizar uma máquina existente
+    public static int putMaquina(Maquina maquina) {
+        JSONObject json = new JSONObject();
+        json.put("codigo", maquina.getCodigo());
+        json.put("nome", maquina.getNome());
+        json.put("modelo", maquina.getModelo());
+        json.put("fabricante", maquina.getFabricante());
+        json.put("dataAquisicao", maquina.getDataAquisicao().toString());
+        json.put("tempoVidaEstimado", maquina.getTempoVidaEstimado());
+        json.put("localizacao", maquina.getLocalizacao());
+        json.put("detalhes", maquina.getDetalhes());
+        json.put("manual", maquina.getManual());
 
-        return ApiConnection.putData("maquinas/" + maquina.getId(), maquinaJson.toString());
+        return ApiConnection.putData("maquinas/" + maquina.getId(), json.toString());
     }
 
-    // Método para deletar uma máquina (DELETE)
-    public static int deleteMaquina(String id) {
-        return ApiConnection.deleteData("maquinas/" + id);
-    }
 }

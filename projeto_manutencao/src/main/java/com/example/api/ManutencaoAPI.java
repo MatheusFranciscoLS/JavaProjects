@@ -3,32 +3,29 @@ package com.example.api;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import com.example.models.Manutencao;
-
-import java.time.LocalDate;
+import java.time.LocalDate; // Certifique-se de importar LocalDate
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManutencaoAPI {
-    private static List<Manutencao> manutencoes = new ArrayList<>();
 
-    // Método para obter todas as manutenções (GET)
     public static List<Manutencao> getManutencoes() {
         String json = ApiConnection.getData("manutencoes");
-        
+        List<Manutencao> manutencoes = new ArrayList<>();
+
         if (json != null) {
             JSONArray jsonArray = new JSONArray(json);
-            manutencoes.clear();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Manutencao manutencao = new Manutencao(
                     jsonObject.getString("id"),
-                    jsonObject.getString("maquinaID"),
-                    LocalDate.parse(jsonObject.getString("data")),
+                    jsonObject.getString("maquinaId"),
+                    LocalDate.parse(jsonObject.getString("data")), // Verifique se a data está no formato correto
                     jsonObject.getString("tipo"),
                     jsonObject.getString("pecasTrocadas"),
-                    jsonObject.getLong("tempoDeParada"),
-                    jsonObject.getString("tecnicoID"),
-                    jsonObject.getString("observacoes")
+                    jsonObject.getLong("tempoParada"),
+                    jsonObject.getString("tecnicoId"),
+                    jsonObject.getString("observacao")
                 );
                 manutencoes.add(manutencao);
             }
@@ -36,37 +33,29 @@ public class ManutencaoAPI {
         return manutencoes;
     }
 
-    // Método para criar uma nova manutenção (POST)
-    public int createManutencao(Manutencao manutencao) {
-        JSONObject manutencaoJson = new JSONObject();
-        manutencaoJson.put("maquinaID", manutencao.getMaquinaID());
-        manutencaoJson.put("data", manutencao.getData().toString());
-        manutencaoJson.put("tipo", manutencao.getTipo());
-        manutencaoJson.put("pecasTrocadas", manutencao.getPecasTrocadas());
-        manutencaoJson.put("tempoDeParada", manutencao.getTempoDeParada());
-        manutencaoJson.put("tecnicoID", manutencao.getTecnicoID());
-        manutencaoJson.put("observacoes", manutencao.getObservacoes());
+    public static int postManutencao(Manutencao manutencao) {
+        JSONObject json = new JSONObject();
+        json.put("maquinaId", manutencao.getMaquinaID());
+        json.put("data", manutencao.getData().toString());
+        json.put("tipo", manutencao.getTipo());
+        json.put("pecasTrocadas", manutencao.getPecasTrocadas());
+        json.put("tempoParada", manutencao.getTempoDeParada());
+        json.put("tecnicoId", manutencao.getTecnicoID());
+        json.put("observacao", manutencao.getObservacoes());
 
-        return ApiConnection.postData("manutencoes", manutencaoJson.toString());
+        return ApiConnection.postData("manutencoes", json.toString());
     }
 
-    // Método para atualizar uma manutenção (PUT)
-    public static int updateManutencao(Manutencao manutencao) {
-        JSONObject manutencaoJson = new JSONObject();
-        manutencaoJson.put("id", manutencao.getId());
-        manutencaoJson.put("maquinaID", manutencao.getMaquinaID());
-        manutencaoJson.put("data", manutencao.getData().toString());
-        manutencaoJson.put("tipo", manutencao.getTipo());
-        manutencaoJson.put("pecasTrocadas", manutencao.getPecasTrocadas());
-        manutencaoJson.put("tempoDeParada", manutencao.getTempoDeParada());
-        manutencaoJson.put("tecnicoID", manutencao.getTecnicoID());
-        manutencaoJson.put("observacoes", manutencao.getObservacoes());
+    public static int putManutencao(Manutencao manutencao) {
+        JSONObject json = new JSONObject();
+        json.put("maquinaId", manutencao.getMaquinaID());
+        json.put("data", manutencao.getData().toString());
+        json.put("tipo", manutencao.getTipo());
+        json.put("pecasTrocadas", manutencao.getPecasTrocadas());
+        json.put("tempoParada", manutencao.getTempoDeParada());
+        json.put("tecnicoId", manutencao.getTecnicoID());
+        json.put("observacao", manutencao.getObservacoes());
 
-        return ApiConnection.putData("manutencoes/" + manutencao.getId(), manutencaoJson.toString());
-    }
-
-    // Método para deletar uma manutenção (DELETE)
-    public static int deleteManutencao(String id) {
-        return ApiConnection.deleteData("manutencoes/" + id);
+        return ApiConnection.putData("manutencoes/" + manutencao.getId(), json.toString());
     }
 }
