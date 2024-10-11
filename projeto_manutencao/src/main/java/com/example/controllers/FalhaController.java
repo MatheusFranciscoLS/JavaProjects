@@ -1,10 +1,11 @@
 package com.example.controllers;
 
+import com.example.api.FalhasAPI;
+
+import com.example.models.Falha;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.api.FalhaAPI;
-import com.example.models.Falha;
 
 public class FalhaController {
     private List<Falha> falhas;
@@ -13,20 +14,44 @@ public class FalhaController {
         falhas = new ArrayList<>();
     }
 
-    // Métodos - CRUD
-    public void createFalha(Falha falha) {
-        FalhaAPI.postFalha(falha); // Adicionar na API
-        this.falhas.add(falha);     // Adicionar na lista local
+    // Método para criar uma nova falha
+    public Falha createFalha(Falha falha) {
+        Falha novaFalha = FalhasAPI.createFalha(falha);
+        if (novaFalha != null) {
+            // Atualiza a lista de máquinas após criar uma nova
+            readFalhas();
+        }
+        return novaFalha; // Retorna o objeto Maquina criado
     }
 
+    // Método para obter a lista de falhas e armazenar na lista local
     public List<Falha> readFalhas() {
-        falhas = FalhaAPI.getFalhas(); // Atualiza a lista com dados da API
+        List<Falha> falhas = FalhasAPI.getFalhas();
         return falhas;
     }
 
-    public void updateFalha(int posicao, Falha falha) {
-        falhas.set(posicao, falha); // Atualiza a lista local
-        FalhaAPI.putFalha(falha);  // Atualiza na API
+    // Método para atualizar uma falha existente
+    public Falha updateFalha(Falha falha) {
+        Falha novaFalha = FalhasAPI.updateFalha(falha);
+        if (novaFalha != null) {
+            // Atualiza a lista de máquinas após criar uma nova
+            readFalhas();
+        }
+        return novaFalha; // Retorna o objeto Maquina criado
     }
 
+    // Método para deletar uma falha pelo ID
+    public String deleteFalha(String id) {
+        String response = FalhasAPI.deleteFalha(id);
+        if (response != null) {
+            // Atualiza a lista de falhas após a exclusão
+            readFalhas();
+        }
+        return response;
+    }
+
+    // Método para obter a lista de falhas (pode ser usado para outros propósitos)
+    public List<Falha> getFalhas() {
+        return falhas;
+    }
 }

@@ -11,28 +11,50 @@
       "localizacao": "Linha 2",
       "detalhes": "Alta precisão e velocidade.",
       "manual": "URL do manual"
+    },
+    {
+      "tempoVidaEstimado": 8,
+      "codigo": "M003",
+      "localizacao": "Linha 1",
+      "nome": "Torno",
+      "fabricante": "ROMI",
+      "manual": "URL",
+      "modelo": "teste",
+      "dataAquisicao": "2024-10-11",
+      "detalhes": "Alta precisao",
+      "id": "1cb0"
     }
   ],
   "historicoManutencao": [
     {
-      "id": "1",
-      "maquinaId": 1,
-      "data": "2024-10-07",
-      "tipo": "Preventiva",
-      "pecasTrocadas": "Correia",
       "tempoDeParada": 4,
+      "observacoes": "Substituição preventiva da correia.",
+      "tipo": "Preventiva",
+      "data": "2024-10-08",
+      "maquinaId": "1",
+      "pecasTrocadas": "Correia",
       "tecnicoId": "João Silva",
-      "observacoes": "Substituição preventiva da correia."
+      "id": "1"
     },
     {
-      "id": "a2d2",
-      "maquinaId": "1",
-      "data": "2024-10-10",
-      "tipo": "Corretiva",
-      "pecasTrocadas": "Motor",
       "tempoDeParada": 2,
-      "tecnicoId": null,
-      "observacoes": "Substituição do motor devido a falha."
+      "observacoes": "Substituição do motor devido a falha.",
+      "tipo": "Corretiva",
+      "data": "2024-10-10",
+      "maquinaId": "2",
+      "pecasTrocadas": "Motor",
+      "tecnicoId": "desconhecido",
+      "id": "a2d2"
+    },
+    {
+      "id": "2ceb",
+      "tempoDeParada": 3,
+      "observacoes": "substituicao",
+      "tipo": "Corretiva",
+      "data": "2024-10-11",
+      "maquinaId": "3",
+      "pecasTrocadas": "Motor",
+      "tecnicoId": "desconhecido"
     }
   ],
   "falhas": [
@@ -45,12 +67,20 @@
       "operador": "Carlos Lima"
     },
     {
-      "id": "353e",
-      "maquinaId": "1",
       "data": "2024-10-05",
-      "problema": "Falha no sistema elétrico",
       "prioridade": "Média",
-      "operador": "Ana Costa"
+      "maquinaId": "4",
+      "problema": "Falha no sistema elétrico",
+      "operador": "Ana Costa",
+      "id": "353e"
+    },
+    {
+      "id": "3bd8",
+      "data": "2024-10-11",
+      "prioridade": "Media",
+      "maquinaId": "2",
+      "problema": "Falha no cambio",
+      "operador": "Matheus"
     }
   ],
   "tecnicos": [
