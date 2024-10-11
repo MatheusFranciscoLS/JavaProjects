@@ -200,46 +200,34 @@ public class ManutencaoPanel extends JPanel {
         tableModel.setValueAt(manutencao.getObservacoes(), rowIndex, 7);
     }
 
-   // Método para gerar o relatório de manutenção
-private void gerarRelatorioManutencao() {
-    String filePath = chooseFileLocation();
-    if (filePath == null)
-        return; // Se o usuário cancelou a escolha do arquivo
+    // Método para gerar o relatório de manutenção
+    private void gerarRelatorioManutencao() {
+        String filePath = chooseFileLocation();
+        if (filePath == null)
+            return; // Se o usuário cancelou a escolha do arquivo
 
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-        // Calcular métricas MTTR e MTBF
-        double mttr = calculateMTTR();
-        double mtbf = calculateMTBF();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            // Calcular métricas MTTR e MTBF (exemplo básico)
+            double mttr = calculateMTTR();
+            double mtbf = calculateMTBF();
 
-        writer.write("Relatório de Manutenção\n");
-        writer.write("---------------------------\n");
-        writer.write(String.format("MTTR: %.2f horas\n", mttr));
-        writer.write(String.format("MTBF: %.2f horas\n", mtbf));
-        writer.write("---------------------------\n");
-        writer.write("Detalhes das Manutenções:\n");
-        writer.write("---------------------------\n");
+            writer.write("Relatório de Manutenção\n");
+            writer.write("MTTR: " + mttr + " horas\n");
+            writer.write("MTBF: " + mtbf + " horas\n");
+            writer.write("Detalhes das Manutenções:\n");
 
-        // Escrevendo cabeçalho da tabela
-        for (int col = 0; col < tableModel.getColumnCount(); col++) {
-            writer.write(String.format("%-20s", tableModel.getColumnName(col))); // Formatação de coluna
-        }
-        writer.newLine();
-
-        // Escrevendo os dados da tabela
-        for (int row = 0; row < tableModel.getRowCount(); row++) {
-            for (int col = 0; col < tableModel.getColumnCount(); col++) {
-                writer.write(String.format("%-20s", tableModel.getValueAt(row, col))); // Formatação de coluna
+            for (int row = 0; row < tableModel.getRowCount(); row++) {
+                for (int col = 0; col < tableModel.getColumnCount(); col++) {
+                    writer.write(tableModel.getValueAt(row, col) + "\t");
+                }
+                writer.newLine();
             }
-            writer.newLine();
+
+            JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso!");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e.getMessage());
         }
-
-        writer.write("---------------------------\n");
-        JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso!");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Erro ao gerar relatório: " + e.getMessage());
     }
-}
-
 
     // Método para escolher a localização do arquivo
     private String chooseFileLocation() {
@@ -254,43 +242,12 @@ private void gerarRelatorioManutencao() {
     }
 
     private double calculateMTTR() {
-        int totalRepairTime = 0; // Total time taken for repairs
-        int totalRepairs = 0; // Total number of repairs
-
-        for (int row = 0; row < tableModel.getRowCount(); row++) {
-            int repairTime = (int) tableModel.getValueAt(row, 5); // Supondo que a coluna 5 contém o tempo de parada em
-                                                                  // horas
-            totalRepairTime += repairTime;
-
-            // Contamos somente se foi uma manutenção de falha
-            boolean houveFalha = (boolean) tableModel.getValueAt(row, 8); // Supondo que a coluna 8 indica falhas
-            if (houveFalha) {
-                totalRepairs++;
-            }
-        }
-
-        return totalRepairs > 0 ? (double) totalRepairTime / totalRepairs : 0.0; // Retorna MTTR
+        // Lógica para calcular MTTR (simulação)
+        return 0.0; // Implementar lógica
     }
 
     private double calculateMTBF() {
-        int totalOperationalTime = 0; // Total operational time in hours
-        int totalFailures = 0; // Total number of failures
-
-        for (int row = 0; row < tableModel.getRowCount(); row++) {
-            boolean houveFalha = (boolean) tableModel.getValueAt(row, 8); // Supondo que a coluna 8 indica falhas
-            int repairTime = (int) tableModel.getValueAt(row, 5); // Tempo de parada
-
-            // Se houve uma falha, contamos
-            if (houveFalha) {
-                totalFailures++;
-                // Suponha que o tempo total de operação é o tempo de parada
-                // Aqui pode ser mais complexo se você tiver uma lógica real de tempo
-                // operacional
-                totalOperationalTime += repairTime; // Este exemplo usa apenas o tempo de parada
-            }
-        }
-
-        return totalFailures > 0 ? (double) totalOperationalTime / totalFailures : 0.0; // Retorna MTBF
+        // Lógica para calcular MTBF (simulação)
+        return 0.0; // Implementar lógica
     }
-
 }
