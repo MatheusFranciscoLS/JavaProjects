@@ -2,12 +2,15 @@ package com.example.api;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import com.example.models.Tecnico;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TecnicoAPI {
 
+    // Método para obter a lista de técnicos
     public static List<Tecnico> getTecnicos() {
         String json = ApiConnection.getData("tecnicos");
         List<Tecnico> tecnicos = new ArrayList<>();
@@ -28,25 +31,37 @@ public class TecnicoAPI {
         return tecnicos;
     }
 
-    public static int postTecnico(Tecnico tecnico) {
-        JSONObject json = new JSONObject();
-        json.put("nome", tecnico.getNome());
-        json.put("especialidade", tecnico.getEspecialidade());
-        json.put("disponibilidade", tecnico.getDisponibilidade());
+    // Método para adicionar um novo técnico
+    public static void postTecnico(Tecnico tecnico) {
+        // Criar um Objeto Json
+        JSONObject tecnicoObject = new JSONObject();
+        tecnicoObject.put("id", tecnico.getId());
+        tecnicoObject.put("nome", tecnico.getNome());
+        tecnicoObject.put("especialidade", tecnico.getEspecialidade());
+        tecnicoObject.put("disponibilidade", tecnico.getDisponibilidade());
 
-        return ApiConnection.postData("tecnicos", json.toString());
+        // Gravando na API
+        if (!tecnicoObject.isEmpty()) {
+            ApiConnection.postData("tecnicos", tecnicoObject.toString());
+        }
     }
 
-    public static int putTecnico(Tecnico tecnico) {
-        JSONObject json = new JSONObject();
-        json.put("nome", tecnico.getNome());
-        json.put("especialidade", tecnico.getEspecialidade());
-        json.put("disponibilidade", tecnico.getDisponibilidade());
+    // Método para atualizar um técnico existente
+    public static void putTecnico(Tecnico tecnico) {
+        // Criar um Objeto Json
+        JSONObject tecnicoObject = new JSONObject();
+        tecnicoObject.put("nome", tecnico.getNome());
+        tecnicoObject.put("especialidade", tecnico.getEspecialidade());
+        tecnicoObject.put("disponibilidade", tecnico.getDisponibilidade());
 
-        return ApiConnection.putData("tecnicos/" + tecnico.getId(), json.toString());
+        // Atualizando na API
+        if (!tecnicoObject.isEmpty()) {
+            ApiConnection.putData("tecnicos/" + tecnico.getId(), tecnicoObject.toString());
+        }
     }
 
-    public static int deleteTecnico(String id) {
-        return ApiConnection.deleteData("tecnicos/" + id);
+    // Método para deletar um técnico
+    public static void deleteTecnico(String id) {
+        ApiConnection.deleteData("tecnicos/" + id);
     }
 }

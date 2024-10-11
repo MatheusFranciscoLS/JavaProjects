@@ -2,13 +2,16 @@ package com.example.api;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import com.example.models.Falha;
-import java.time.LocalDate; // Certifique-se de importar LocalDate
+
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class FalhaAPI {
 
+    // Método para obter a lista de falhas
     public static List<Falha> getFalhas() {
         String json = ApiConnection.getData("falhas");
         List<Falha> falhas = new ArrayList<>();
@@ -20,7 +23,7 @@ public class FalhaAPI {
                 Falha falha = new Falha(
                     jsonObject.getString("id"),
                     jsonObject.getString("maquinaId"),
-                    LocalDate.parse(jsonObject.getString("data")), // Verifique se a data está no formato correto
+                    LocalDate.parse(jsonObject.getString("data")),
                     jsonObject.getString("problema"),
                     jsonObject.getString("prioridade"),
                     jsonObject.getString("operador")
@@ -31,25 +34,36 @@ public class FalhaAPI {
         return falhas;
     }
 
-    public static int postFalha(Falha falha) {
-        JSONObject json = new JSONObject();
-        json.put("maquinaId", falha.getMaquinaID());
-        json.put("data", falha.getData().toString());
-        json.put("problema", falha.getProblema());
-        json.put("prioridade", falha.getPrioridade());
-        json.put("operador", falha.getOperador());
+    // Método para adicionar uma nova falha
+    public static void postFalha(Falha falha) {
+        // Criar um Objeto Json
+        JSONObject falhaObject = new JSONObject();
+        falhaObject.put("id", falha.getId());
+        falhaObject.put("maquinaId", falha.getMaquinaID());
+        falhaObject.put("data", falha.getData().toString());
+        falhaObject.put("problema", falha.getProblema());
+        falhaObject.put("prioridade", falha.getPrioridade());
+        falhaObject.put("operador", falha.getOperador());
 
-        return ApiConnection.postData("falhas", json.toString());
+        // Gravando na API
+        if (!falhaObject.isEmpty()) {
+            ApiConnection.postData("falhas", falhaObject.toString());
+        }
     }
 
-    public static int putFalha(Falha falha) {
-        JSONObject json = new JSONObject();
-        json.put("maquinaId", falha.getMaquinaID());
-        json.put("data", falha.getData().toString());
-        json.put("problema", falha.getProblema());
-        json.put("prioridade", falha.getPrioridade());
-        json.put("operador", falha.getOperador());
+    // Método para atualizar uma falha existente
+    public static void putFalha(Falha falha) {
+        // Criar um Objeto Json
+        JSONObject falhaObject = new JSONObject();
+        falhaObject.put("maquinaId", falha.getMaquinaID());
+        falhaObject.put("data", falha.getData().toString());
+        falhaObject.put("problema", falha.getProblema());
+        falhaObject.put("prioridade", falha.getPrioridade());
+        falhaObject.put("operador", falha.getOperador());
 
-        return ApiConnection.putData("falhas/" + falha.getId(), json.toString());
+        // Atualizando na API
+        if (!falhaObject.isEmpty()) {
+            ApiConnection.putData("falhas/" + falha.getId(), falhaObject.toString());
+        }
     }
 }

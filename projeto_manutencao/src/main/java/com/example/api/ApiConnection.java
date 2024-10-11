@@ -10,7 +10,7 @@ import java.net.URL;
 public class ApiConnection {
     private static final String API_URL = "http://localhost:3000/";
 
-    // Método GET
+    // Métodos GET
     public static String getData(String endpoint) {
         try {
             URL url = new URL(API_URL + endpoint);
@@ -35,71 +35,80 @@ public class ApiConnection {
         }
     }
 
-    // Método POST
-    public static int postData(String endpoint, String jsonInputString) {
+    // POST
+    public static void postData(String endPoint, String inputData) {
         try {
-            URL url = new URL(API_URL + endpoint);
+            URL url = new URL(API_URL + endPoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setDoOutput(true);
+            connection.setDoOutput(true); // Enviar os dados para a API
 
             try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"))) {
-                bw.write(jsonInputString);
+                bw.write(inputData);
                 bw.flush();
             }
+            // Verificar o status da resposta
+            int status = connection.getResponseCode();
+            if (status != HttpURLConnection.HTTP_CREATED) { // HTTP 201 Created
+                throw new Exception("Erro ao criar usuário: " + status);
+            }
 
-            int responseCode = connection.getResponseCode();
+            System.out.println("Cadastro Realizado com Sucesso");
             connection.disconnect();
-            return responseCode;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
         }
     }
 
-    // Método PUT
-    public static int putData(String endpoint, String jsonInputString) {
+    // PUT
+    public static void putData(String endPoint, String inputData) {
         try {
-            URL url = new URL(API_URL + endpoint);
+            URL url = new URL(API_URL + endPoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("PUT");
             connection.setRequestProperty("Content-Type", "application/json; utf-8");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setDoOutput(true);
+            connection.setDoOutput(true); // Enviar os dados para a API
 
             try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream(), "UTF-8"))) {
-                bw.write(jsonInputString);
+                bw.write(inputData);
                 bw.flush();
             }
+            // Verificar o status da resposta
+            int status = connection.getResponseCode();
+            if (status != HttpURLConnection.HTTP_OK) { // HTTP 200 OK
+                throw new Exception("Erro ao atualizar usuário: " + status);
+            }
 
-            int responseCode = connection.getResponseCode();
+            System.out.println("Atualização Realizada com Sucesso");
             connection.disconnect();
-            return responseCode;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
         }
     }
 
-    // Método DELETE
-    public static int deleteData(String endpoint) {
+    // DELETE
+    public static void deleteData(String endPoint) {
         try {
-            URL url = new URL(API_URL + endpoint);
+            URL url = new URL(API_URL + endPoint);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("DELETE");
-            connection.setRequestProperty("Accept", "application/json");
 
-            int responseCode = connection.getResponseCode();
+            // Verificar o status da resposta
+            int status = connection.getResponseCode();
+            if (status != HttpURLConnection.HTTP_NO_CONTENT) { // HTTP 204 No Content
+                throw new Exception("Erro ao excluir usuário: " + status);
+            }
+
+            System.out.println("Exclusão Realizada com Sucesso");
             connection.disconnect();
-            return responseCode;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return -1;
         }
     }
 }

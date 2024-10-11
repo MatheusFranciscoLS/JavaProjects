@@ -2,13 +2,16 @@ package com.example.api;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import com.example.models.Manutencao;
-import java.time.LocalDate; // Certifique-se de importar LocalDate
+
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class ManutencaoAPI {
 
+    // Método para obter a lista de manutenções
     public static List<Manutencao> getManutencoes() {
         String json = ApiConnection.getData("manutencoes");
         List<Manutencao> manutencoes = new ArrayList<>();
@@ -20,7 +23,7 @@ public class ManutencaoAPI {
                 Manutencao manutencao = new Manutencao(
                     jsonObject.getString("id"),
                     jsonObject.getString("maquinaId"),
-                    LocalDate.parse(jsonObject.getString("data")), // Verifique se a data está no formato correto
+                    LocalDate.parse(jsonObject.getString("data")),
                     jsonObject.getString("tipo"),
                     jsonObject.getString("pecasTrocadas"),
                     jsonObject.getLong("tempoParada"),
@@ -33,29 +36,40 @@ public class ManutencaoAPI {
         return manutencoes;
     }
 
-    public static int postManutencao(Manutencao manutencao) {
-        JSONObject json = new JSONObject();
-        json.put("maquinaId", manutencao.getMaquinaID());
-        json.put("data", manutencao.getData().toString());
-        json.put("tipo", manutencao.getTipo());
-        json.put("pecasTrocadas", manutencao.getPecasTrocadas());
-        json.put("tempoParada", manutencao.getTempoDeParada());
-        json.put("tecnicoId", manutencao.getTecnicoID());
-        json.put("observacao", manutencao.getObservacoes());
+    // Método para adicionar uma nova manutenção
+    public static void postManutencao(Manutencao manutencao) {
+        // Criar um Objeto Json
+        JSONObject manutencaoObject = new JSONObject();
+        manutencaoObject.put("id", manutencao.getId());
+        manutencaoObject.put("maquinaId", manutencao.getMaquinaID());
+        manutencaoObject.put("data", manutencao.getData().toString());
+        manutencaoObject.put("tipo", manutencao.getTipo());
+        manutencaoObject.put("pecasTrocadas", manutencao.getPecasTrocadas());
+        manutencaoObject.put("tempoParada", manutencao.getTempoDeParada());
+        manutencaoObject.put("tecnicoId", manutencao.getTecnicoID());
+        manutencaoObject.put("observacao", manutencao.getObservacoes());
 
-        return ApiConnection.postData("manutencoes", json.toString());
+        // Gravando na API
+        if (!manutencaoObject.isEmpty()) {
+            ApiConnection.postData("manutencoes", manutencaoObject.toString());
+        }
     }
 
-    public static int putManutencao(Manutencao manutencao) {
-        JSONObject json = new JSONObject();
-        json.put("maquinaId", manutencao.getMaquinaID());
-        json.put("data", manutencao.getData().toString());
-        json.put("tipo", manutencao.getTipo());
-        json.put("pecasTrocadas", manutencao.getPecasTrocadas());
-        json.put("tempoParada", manutencao.getTempoDeParada());
-        json.put("tecnicoId", manutencao.getTecnicoID());
-        json.put("observacao", manutencao.getObservacoes());
+    // Método para atualizar uma manutenção existente
+    public static void putManutencao(Manutencao manutencao) {
+        // Criar um Objeto Json
+        JSONObject manutencaoObject = new JSONObject();
+        manutencaoObject.put("maquinaId", manutencao.getMaquinaID());
+        manutencaoObject.put("data", manutencao.getData().toString());
+        manutencaoObject.put("tipo", manutencao.getTipo());
+        manutencaoObject.put("pecasTrocadas", manutencao.getPecasTrocadas());
+        manutencaoObject.put("tempoParada", manutencao.getTempoDeParada());
+        manutencaoObject.put("tecnicoId", manutencao.getTecnicoID());
+        manutencaoObject.put("observacao", manutencao.getObservacoes());
 
-        return ApiConnection.putData("manutencoes/" + manutencao.getId(), json.toString());
+        // Atualizando na API
+        if (!manutencaoObject.isEmpty()) {
+            ApiConnection.putData("manutencoes/" + manutencao.getId(), manutencaoObject.toString());
+        }
     }
 }

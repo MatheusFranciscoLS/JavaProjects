@@ -1,47 +1,54 @@
 package com.example.view;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import com.example.controllers.FalhaController;
 import com.example.models.Falha;
 
 public class FalhasPanel extends JPanel {
+    // ATRIBUTOS
     private FalhaController falhaController;
-    private JTable falhaTable;
+    private JTable falhasTable;
     private DefaultTableModel tableModel;
     private JButton btnSalvarAlteracoes;
     private JButton btnCadastrarFalha;
 
+    // Construtor
     public FalhasPanel() {
         super(new BorderLayout());
         falhaController = new FalhaController();
 
-        tableModel = new DefaultTableModel(new Object[] {
-                "ID", "Máquina ID", "Data", "Problema", "Prioridade", "Operador"
+        tableModel = new DefaultTableModel(new Object[]{
+            "ID", "Máquina ID", "Data", "Problema", "Prioridade", "Operador"
         }, 0);
+        falhasTable = new JTable(tableModel);
 
-        falhaTable = new JTable(tableModel);
-
-        // Carregar as falhas
+        // criar a tabela
         List<Falha> falhas = falhaController.readFalhas();
         for (Falha falha : falhas) {
-            tableModel.addRow(new Object[] {
-                    falha.getId(),
-                    falha.getMaquinaID(),
-                    falha.getData(),
-                    falha.getProblema(),
-                    falha.getPrioridade(),
-                    falha.getOperador()
+            tableModel.addRow(new Object[]{
+                falha.getId(),
+                falha.getMaquinaID(),
+                falha.getData(),
+                falha.getProblema(),
+                falha.getPrioridade(),
+                falha.getOperador()
             });
         }
-        JScrollPane scrollPane = new JScrollPane(falhaTable);
+        JScrollPane scrollPane = new JScrollPane(falhasTable);
         this.add(scrollPane, BorderLayout.CENTER);
 
-        // Adicionar os botões
+        // adicionar os botões
         JPanel painelInferior = new JPanel(new FlowLayout(FlowLayout.CENTER));
         btnCadastrarFalha = new JButton("Cadastrar");
         btnSalvarAlteracoes = new JButton("Salvar");
@@ -49,6 +56,12 @@ public class FalhasPanel extends JPanel {
         painelInferior.add(btnSalvarAlteracoes);
         this.add(painelInferior, BorderLayout.SOUTH);
 
-        // Criar Action Listener para os Botões
+        // Criar as ActionListener para Botões
+        btnCadastrarFalha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Implementar a lógica de cadastro
+            }
+        });
     }
 }
